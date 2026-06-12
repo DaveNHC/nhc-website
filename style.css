@@ -1,0 +1,480 @@
+/* =========================================================
+   NovoHouse Collective — Design Tokens
+   ========================================================= */
+:root {
+  --bg: #0a0a0a;
+  --bg-raised: #161513;
+  --bg-card: #1c1a17;
+  --ink: #f5f3ee;
+  --ink-muted: #9a958c;
+  --gold: #c9a35f;
+  --gold-soft: rgba(201, 163, 95, 0.16);
+  --line: rgba(245, 243, 238, 0.08);
+
+  --font-display: "Barlow Semi Condensed", "Archivo", sans-serif;
+  --font-body: "Inter", "Source Sans Pro", system-ui, sans-serif;
+
+  --max-w: 1180px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* =========================================================
+   Header / Nav
+   ========================================================= */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 28px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.nav-mark {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.nav-mark img {
+  height: 34px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 36px;
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nav-links a {
+  color: var(--ink-muted);
+  transition: color 0.2s ease;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  color: var(--ink);
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.25s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus-visible::after {
+  width: 100%;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  width: 42px;
+  height: 42px;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+@media (max-width: 760px) {
+  .nav-links {
+    position: fixed;
+    inset: 64px 0 0 0;
+    background: var(--bg);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    transform: translateY(-110%);
+    transition: transform 0.3s ease;
+    border-top: 1px solid var(--line);
+  }
+  .nav-links.open { transform: translateY(0); }
+  .nav-toggle { display: block; }
+}
+
+/* =========================================================
+   Hero
+   ========================================================= */
+.hero {
+  position: relative;
+  padding: 120px 28px 100px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero::before {
+  /* Diagonal accent echoing the N stroke in the mark */
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  width: 1px;
+  height: 140%;
+  background: linear-gradient(to bottom, transparent, var(--gold-soft), transparent);
+  transform: translateX(-50%) rotate(18deg);
+  opacity: 0.6;
+}
+
+.hero-mark {
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto 36px;
+  opacity: 0;
+  animation: rise 0.9s ease-out 0.1s forwards;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-display);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: var(--gold);
+  margin-bottom: 18px;
+  opacity: 0;
+  animation: rise 0.9s ease-out 0.3s forwards;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  letter-spacing: 0.01em;
+  margin: 0 auto 22px;
+  max-width: 18ch;
+  line-height: 1.15;
+  opacity: 0;
+  animation: rise 0.9s ease-out 0.45s forwards;
+}
+
+.hero p {
+  max-width: 52ch;
+  margin: 0 auto;
+  color: var(--ink-muted);
+  font-size: 1.05rem;
+  opacity: 0;
+  animation: rise 0.9s ease-out 0.6s forwards;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================================
+   Section scaffolding
+   ========================================================= */
+section {
+  padding: 96px 28px;
+  border-top: 1px solid var(--line);
+}
+
+.section-head {
+  max-width: 640px;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  margin: 0 0 16px;
+  letter-spacing: 0.01em;
+}
+
+.lede {
+  color: var(--ink-muted);
+  font-size: 1.05rem;
+}
+
+/* =========================================================
+   About — doctrine pillars
+   ========================================================= */
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.pillar {
+  background: var(--bg);
+  padding: 40px 32px;
+}
+
+.pillar h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0 0 14px;
+  color: var(--gold);
+}
+
+.pillar p {
+  color: var(--ink-muted);
+  font-size: 0.97rem;
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+  .pillars { grid-template-columns: 1fr; }
+}
+
+.about-body {
+  max-width: 640px;
+  margin: 56px auto 0;
+  text-align: center;
+  color: var(--ink-muted);
+}
+
+.about-body p + p { margin-top: 18px; }
+
+/* =========================================================
+   Companies / Portfolio
+   ========================================================= */
+.company-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.company-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  padding: 44px 36px;
+  position: relative;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.company-card.is-active:hover {
+  border-color: var(--gold-soft);
+  transform: translateY(-3px);
+}
+
+.company-tag {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border: 1px solid var(--gold-soft);
+  color: var(--gold);
+  border-radius: 2px;
+  margin-bottom: 22px;
+}
+
+.company-card.is-coming .company-tag {
+  color: var(--ink-muted);
+  border-color: var(--line);
+}
+
+.company-card h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin: 0 0 12px;
+  letter-spacing: 0.02em;
+}
+
+.company-card p {
+  color: var(--ink-muted);
+  margin: 0 0 0;
+  font-size: 0.97rem;
+}
+
+.company-card.is-coming {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+}
+
+.company-card.is-coming h3 {
+  color: var(--ink-muted);
+}
+
+@media (max-width: 760px) {
+  .company-grid { grid-template-columns: 1fr; }
+}
+
+/* =========================================================
+   Contact
+   ========================================================= */
+.contact-inner {
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-detail {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+
+.contact-detail a {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--gold-soft);
+  padding-bottom: 4px;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.contact-detail a:hover,
+.contact-detail a:focus-visible {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+/* =========================================================
+   Footer
+   ========================================================= */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 40px 28px;
+  text-align: center;
+  color: var(--ink-muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+}
+
+footer .foot-mark {
+  font-family: var(--font-display);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+/* =========================================================
+   FFL placeholder page
+   ========================================================= */
+.coming-soon {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 28px;
+}
+
+.coming-soon img {
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto 32px;
+}
+
+.coming-soon .eyebrow { margin-bottom: 18px; }
+
+.coming-soon h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  margin: 0 0 16px;
+}
+
+.coming-soon p {
+  color: var(--ink-muted);
+  max-width: 46ch;
+}
+
+.back-link {
+  margin-top: 36px;
+  font-family: var(--font-display);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--gold-soft);
+  padding-bottom: 4px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.back-link:hover,
+.back-link:focus-visible {
+  color: var(--gold);
+  border-color: var(--gold);
+}

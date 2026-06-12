@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NovoHouse Collective</title>
+<meta name="description" content="NovoHouse Collective — building durable systems, brands, and leadership structures with renewal and stability." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="index.html" class="nav-mark">
+      <img src="assets/nhc-logo.png" alt="NovoHouse Collective" />
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#companies">Companies</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero" style="border-top: none;">
+    <img class="hero-mark" src="assets/nhc-logo.png" alt="NovoHouse Collective" />
+    <p class="hero-eyebrow">Renewal &amp; Stability</p>
+    <h1>Systems and brands built to endure pressure — and keep evolving.</h1>
+    <p>NovoHouse Collective is a holding company for ventures that modernize without losing what made them trustworthy in the first place.</p>
+  </section>
+
+  <section id="about">
+    <div class="section-head">
+      <p class="eyebrow">About</p>
+      <h2>Built for long-term stewardship</h2>
+      <p class="lede">We build structures people can rely on during change — clarifying complexity instead of adding to it.</p>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar">
+        <h3>Renewal</h3>
+        <p>Adaptation without loss of identity. We modernize the way an operation works without erasing what made it work in the first place.</p>
+      </div>
+      <div class="pillar">
+        <h3>Stability</h3>
+        <p>Dependable structures people can trust during uncertainty — built on practical reality and operational competence, not trend-chasing.</p>
+      </div>
+      <div class="pillar">
+        <h3>Stewardship</h3>
+        <p>Long-term thinking applied to legacy organizations: clarify, scale carefully, and keep what's earned over decades intact.</p>
+      </div>
+    </div>
+
+    <div class="about-body">
+      <p>NovoHouse Collective exists to take on organizations with real operational credibility and help them grow into their next chapter — without becoming something their original audience no longer recognizes.</p>
+    </div>
+  </section>
+
+  <section id="companies">
+    <div class="section-head">
+      <p class="eyebrow">Companies</p>
+      <h2>Under the NovoHouse banner</h2>
+      <p class="lede">Ventures we're building, acquiring, and growing.</p>
+    </div>
+
+    <div class="company-grid">
+      <div class="company-card is-active">
+        <span class="company-tag">Active</span>
+        <h3>Future Fire Leaders</h3>
+        <p>Fire service promotional preparation and leadership development, built on decades of operational coaching experience.</p>
+      </div>
+      <a href="ffl-coming-soon.html" class="company-card is-coming">
+        <span class="company-tag">In Development</span>
+        <h3>New Venture</h3>
+        <p>Details coming soon.</p>
+      </a>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-inner">
+      <p class="eyebrow">Contact</p>
+      <h2>Get in touch</h2>
+      <p class="lede">For inquiries about NovoHouse Collective or its companies, reach out directly.</p>
+      <div class="contact-detail">
+        <a href="mailto:hello@novohousecollective.com">hello@novohousecollective.com</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="foot-mark">NovoHouse Collective</div>
+  <div>&copy; 2026 NovoHouse Collective, LLC. All rights reserved.</div>
+</footer>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const links = document.querySelector('.nav-links');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+</script>
+
+</body>
+</html>
