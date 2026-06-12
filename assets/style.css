@@ -88,6 +88,15 @@ header {
   width: auto;
 }
 
+@media (max-width: 760px) {
+  .nav-mark img {
+    height: 26px;
+  }
+  .nav {
+    padding: 14px 20px;
+  }
+}
+
 .nav-links {
   display: flex;
   gap: 36px;
@@ -149,9 +158,18 @@ header {
     transform: translateY(-110%);
     transition: transform 0.3s ease;
     border-top: 1px solid var(--line);
+    visibility: hidden;
+    z-index: 100;
   }
-  .nav-links.open { transform: translateY(0); }
-  .nav-toggle { display: block; }
+  .nav-links.open {
+    transform: translateY(0);
+    visibility: visible;
+  }
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 /* =========================================================
@@ -183,6 +201,19 @@ header {
   margin: 0 auto 36px;
   opacity: 0;
   animation: rise 0.9s ease-out 0.1s forwards;
+}
+
+@media (max-width: 760px) {
+  .hero {
+    padding: 64px 24px 72px;
+  }
+  .hero::before {
+    opacity: 0.25;
+  }
+  .hero-mark {
+    max-width: 200px;
+    margin: 0 auto 24px;
+  }
 }
 
 .hero-eyebrow {
@@ -228,6 +259,15 @@ header {
 section {
   padding: 96px 28px;
   border-top: 1px solid var(--line);
+}
+
+@media (max-width: 760px) {
+  section {
+    padding: 56px 20px;
+  }
+  .section-head {
+    margin-bottom: 36px;
+  }
 }
 
 .section-head {
